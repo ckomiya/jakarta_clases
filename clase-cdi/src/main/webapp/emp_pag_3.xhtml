@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+    <h:head>
+        <h:title>Información del Cliente</h:title>
+    </h:head>
+    <h:body>
+        <h3>Enter Customer Information (Page 3 of 3)</h3>
+        <h:form>
+        	private String telefonoCasa;
+	private String telefonoTrabajo;
+	private String telefonoCelular;
+            <h:panelGrid columns="2">
+                <h:outputLabel for="telefonoCasa" value="Telefóno de Casa: "/>
+                <h:inputText id="telefonoCasa" value="${empleado.telefonoCasa}"/>
+                <h:outputLabel for="telefonoTrabajo" value="Teléfono de Trabajo: "/>
+                <h:inputText id="telefonoTrabajo" value="${empleado.telefonoTrabajo}"/>
+                <h:outputLabel for="telefonoCelular" value="Número de celular: "/>
+                <h:inputText id="telefonoCelular" value="${empleado.telefonoCelular}"/>
+                <h:commandButton value="Anterior" action="#{empleadoInfoController.navegarAPagina2}"/>
+                <h:commandButton value="Siguiente" action="#{empleadoInfoController.navegarAPaginaConfirmacion}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

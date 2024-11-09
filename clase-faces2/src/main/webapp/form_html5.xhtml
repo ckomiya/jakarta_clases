@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:faces="jakarta.faces">
+  <head faces:id="head">
+    <title>Jakarta Faces Page con marcado de HTML5</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/styles.css"/>
+  </head>
+  <body faces:id="body">
+    <form faces:prependId="false">
+      <div class="table">
+        <div class="table-row">
+          <div class="table-cell">
+            <label faces:for="nombre">Nombre : </label></div>
+          <div class="table-cell">
+            <input type="text" faces:id="nombre"
+                   faces:value="#{cliente.nombre}"/>
+          </div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">
+            <label faces:for="Apellido">Apellido</label></div>
+          <div class="table-cell">
+            <input type="text" faces:id="apellido"
+                   faces:value="#{cliente.apellido}"/>
+          </div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">
+            <label faces:for="email">Dirección de Correo</label></div>
+          <div class="table-cell">
+            <input type="email" faces:id="email"
+                   faces:value="#{cliente.email}"/>
+          </div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell"></div>
+          <div class="table-cell">
+            <input type="submit" faces:action="confirmacion"
+                   value="Guardar"/>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

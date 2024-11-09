@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+  <h:head>
+    <title>Confirmación</title>
+  </h:head>
+  <h:body>
+    <h3>Ingreso de Datos del Empleado (Page 4 of 4)</h3>
+    <p>Has ingresado al siguiente información:</p>
+    Nombre: ${empleado.nombre}<br/>
+    Apellido Paterno: ${empleado.apellidoPaterno}<br/>
+    Apellido Materno: ${empleado.apellidoMaterno}<br/>
+    Dirección: ${empleado.direccion}<br/>
+    Ciudad: ${empleado.ciudad}<br/>
+    Departamento: ${empleado.departamento}<br/>
+    Código Postal : ${empleado.codigoPostal}<br/>
+    Teléfono de casa: ${empleado.telefonoCasa}<br/>
+    Teléfono de trabajo: ${empleado.telefonoTrabajo}<br/>
+    Número de celular: ${empleado.telefonoCelular}<br/>
+    <p>¿Es esto correcto?</p>
+    <h:form>
+      <h:panelGroup>
+        <h:commandButton value="Si (Continuar)" action="empleadoinfo-return"/>&#160;<h:commandButton value="No (Regresar)" action="empleadoinfo"/>
+      </h:panelGroup>
+    </h:form>
+  </h:body>
+</html>

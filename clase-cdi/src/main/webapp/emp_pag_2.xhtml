@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
+	xmlns:f="jakarta.faces.core">
+<h:head>
+	<h:title>Información del Empleado</h:title>
+</h:head>
+<h:body>
+	<h3>Ingrese información del empleado (Página 2 de 3)</h3>
+	<h:form>
+       
+	
+            <h:panelGrid columns="2">
+			<h:outputLabel for="direccion" value="Dirección: " />
+			<h:inputText id="direccion" value="${empleado.direccion}" />
+			<h:outputLabel for="ciudad" value="Ciudad: " />
+			<h:inputText id="ciudad" value="${empleado.ciudad}" />
+			<h:outputLabel for="departamento" value="Departamento: " />
+			<h:selectOneMenu id="departamento" value="${empleado.departamento}">
+				<f:selectItem itemLabel="" itemValue="" />
+				<f:selectItem itemLabel="Lima" itemValue="LI" />
+				<f:selectItem itemLabel="Arequipa" itemValue="ARE" />
+				<f:selectItem itemLabel="Cusco" itemValue="CU" />
+				<f:selectItem itemLabel="La Libertad" itemValue="LL" />
+				<f:selectItem itemLabel="Piura" itemValue="PI" />
+
+			</h:selectOneMenu>
+			<h:outputLabel for="codigoPostal" value="Código Postal" />
+			<h:inputText id="codigoPostal" value="${empleado.codigoPostal}" />
+			<h:commandButton value="Anterior"
+				action="#{empleadoInfoController.navegarAPagina1}" />
+			<h:commandButton value="Siguiente"
+				action="#{empleadoInfoController.navegarAPagina3}" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

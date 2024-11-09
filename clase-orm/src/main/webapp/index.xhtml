@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+  <h:head>
+    <title>Update Database</title>
+  </h:head>
+  <h:body>
+    <h:form>
+      <h:commandLink value="Actualizar Base de Datos" action="#{jakartaPersistenceDemoBean.actualizarBD()}"/><br/><br/>
+      <h:commandLink value="Actualizar Relación Uno a Uno" action="#{relacionOneToOneDemoBean.actualizarBD()}"/><br/><br/>
+      <h:commandLink value="Actualizar Relación Uno a Muchos" action="#{relacionOneToManyDemoBean.actualizarBD()}"/><br/><br/>
+      <h:commandLink value="Actualizar Relación Muchos a Muchos" action="#{relacionManyToManyDemoBean.actualizarBD()}"/><br/><br/>
+          <br/><br/>
+   	   <h:commandLink value="Encontrar entidad con clave primaria compuesta" action="#{clavePrimariaCompuestaDemoBean.encontrarArticuloPedido()}"/>	
+          <br/><br/>
+       <h:commandLink value="Encontrar entidades vía JPQL" action="#{selectQueryDemoBean.buscarDepartamento()}"/>
+          <br/><br/>
+       <h:commandLink value="Encontrar entidades vía Criteria Api" action="#{criteriaApiDemoBean.buscarDepartamento()}"/>
+          <br/><br/>
+    	<h:commandLink value="Ejecutar Criteria Update" action="#{criteriaUpdateDemoBean.actualizarData()}"/>
+    	  <br/><br/>
+    	<h:commandLink value="Ejecutar Criteria Delete" action="#{criteriaDeleteDemoBean.eliminarData()}"/>
+    </h:form>
+  </h:body>
+</html>
+
+
+
+
+

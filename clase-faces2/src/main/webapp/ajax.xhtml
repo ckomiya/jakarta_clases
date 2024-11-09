@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+  <h:head>
+    <title>Demostración de Ajax en Faces</title>
+  </h:head>
+  <h:body>
+    <h2>Demostración de Ajax en Faces</h2>
+    <h:form>
+      <h:messages/>
+      <h:panelGrid columns="2">
+
+        <h:outputText value="Entrada:"/>
+        <h:inputText id="textInput" value="#{ajaxController.texto}">
+          <f:ajax render="textVal" event="keyup"/>
+        </h:inputText>
+
+        <h:outputText value="Repetir entrada:"/>
+        <h:outputText id="textVal" value="#{ajaxController.texto}"/>
+      </h:panelGrid>
+      <hr/>
+      <h:panelGrid columns="2">
+        <h:panelGroup/>
+        <h:panelGroup/>
+        <h:outputText value="Primer Operador:"/>
+        <h:inputText id="primero" value="#{ajaxController.primerOperador}" size="3"/>
+        <h:outputText value="Segundo Operador:"/>
+        <h:inputText id="segundo" value="#{ajaxController.segundoOperador}" size="3"/>
+        <h:outputText value="Total:"/>
+        <h:outputText id="suma" value="#{ajaxController.total}"/>
+        <h:commandButton actionListener="#{ajaxController.calcularTotal}"
+                         value="Calcular Suma">
+          <f:ajax execute="primero segundo" render="suma"/>
+        </h:commandButton>
+		<h:commandButton value="Iniciar flujo Empleado" action="empleadoinfo" />
+      </h:panelGrid>
+    </h:form>
+  </h:body>
+</html>

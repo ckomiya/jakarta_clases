@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:faces="jakarta.faces">
+  <head faces:id="head">
+    <title>Datos del cliente ingresado</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/styles.css"/>
+  </head>
+  <body faces:id="body">
+    <div class="table">
+      <div class="table-row">
+        <div class="table-cell">
+          Nombre :
+        </div>
+        <div class="table-cell">
+          #{cliente.nombre}
+        </div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell">
+          Apellido :
+        </div>
+        <div class="table-cell">
+          #{cliente.apellido}
+        </div>
+      </div>
+      <div class="table-row">
+        <div class="table-cell">
+          Email :
+        </div>
+        <div class="table-cell">
+          #{cliente.email}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

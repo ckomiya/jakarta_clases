@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:pt="jakarta.faces.passthrough">
+  <h:head>
+    <title>Ingreso de Datos del cliente</title>
+  </h:head>
+  <h:body>
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <h:form id="customerForm">
+      <h:messages/>
+      <h:panelGrid columns="2"
+                   columnClasses="rightAlign,leftAlign">
+        <h:outputLabel for="nombre" value="Nombre:">
+        </h:outputLabel>
+        <h:inputText id="nombre"
+                     label="Nombre"
+                     value="#{cliente.nombre}"
+                     required="true"
+                     pt:placeholder="Nombre">
+          <f:validateLength minimum="2" maximum="30">
+          </f:validateLength>
+        </h:inputText>
+        <h:outputLabel for="apellido" value="Apellido :">
+        </h:outputLabel>
+        <h:inputText id="apellido"
+                     label="Apellido"
+                     value="#{cliente.apellido}"
+                     required="true"
+                     pt:placeholder="Apellido">
+          <f:validateLength minimum="2" maximum="30">
+          </f:validateLength>
+        </h:inputText>
+        <h:outputLabel for="email" value="Email :">
+        </h:outputLabel>
+        <h:inputText id="email"
+                     label="Email"
+                     value="#{cliente.email}"
+                     pt:placeholder="Dirección email">
+          <f:validateLength minimum="3" maximum="30">
+          </f:validateLength>
+        </h:inputText>
+        <h:panelGroup></h:panelGroup>
+        <h:commandButton action="confirmacion" value="Guardar">
+        </h:commandButton>
+      </h:panelGrid>
+    </h:form>
+  </h:body>
+</html>

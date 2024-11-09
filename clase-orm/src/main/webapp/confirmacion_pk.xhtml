@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+  <h:head>
+    <title>Demostración de Clave Primaria Compuesta</title>
+  </h:head>
+  <h:body>
+    <h:panelGroup rendered="#{clavePrimariaCompuestaDemoBean.articuloPedido ne null}">
+      Se encontró una instancia de Pedido-Artículo para la clave primaria proporcionada:<br/>
+      ID de pedido del artículo: #{clavePrimariaCompuestaDemoBean.articuloPedido.articuloId}<br/>
+      ID de artículo del pedido: #{clavePrimariaCompuestaDemoBean.articuloPedido.pedidoId}<br/>
+    </h:panelGroup>
+    <h:panelGroup rendered="#{clavePrimariaCompuestaDemoBean.articuloPedido eq null}">
+      No se encontró ninguna instancia de Pedido-Artículo para la clave primaria proporcionada.
+    </h:panelGroup>
+  </h:body>
+</html>

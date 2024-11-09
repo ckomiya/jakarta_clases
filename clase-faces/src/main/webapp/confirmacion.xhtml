@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+  <h:head>
+    <title>Datos del cliente ingresados</title>
+  </h:head>
+  <h:body>
+    <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
+      <h:outputText value="Nombre: "></h:outputText>
+      <h:outputText value="#{cliente.nombre}"></h:outputText>
+      <h:outputText value="Apellido: "></h:outputText>
+      <h:outputText value="#{cliente.apellido}"></h:outputText>
+      <h:outputText value="Email: "></h:outputText>
+      <h:outputText value="#{cliente.email}"></h:outputText>
+    </h:panelGrid>
+  </h:body>
+</html>
