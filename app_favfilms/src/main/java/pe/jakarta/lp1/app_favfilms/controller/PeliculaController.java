@@ -41,7 +41,7 @@ public class PeliculaController implements Serializable{
 	}
 	
 	public String crearPelicula() {
-		int peliculaId = peliculas.size();
+		int peliculaId = peliculas.size()+1;
 		pelicula.setId(peliculaId);
 		peliculas.add(pelicula);
 		
