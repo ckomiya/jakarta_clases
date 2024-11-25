@@ -21,17 +21,6 @@ public class AjaxController implements Serializable {
 
 	private int total;
 
-	private static final Logger LOG = Logger.getLogger(AjaxController.class.getName());
-
-	@Inject
-	private FacesContext facesContext;
-
-	@PostConstruct
-	public void init() {
-		String projectStage = facesContext.getApplication().getProjectStage().toString();
-		LOG.log(Level.INFO, String.format("--- La etapa del proyecto es: %s", projectStage));
-
-	}
 
 	public void calcularTotal(ActionEvent actionEvent) {
 		total = primerOperador + segundoOperador;

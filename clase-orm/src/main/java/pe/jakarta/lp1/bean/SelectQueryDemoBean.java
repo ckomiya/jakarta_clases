@@ -16,20 +16,24 @@ public class SelectQueryDemoBean {
 	@PersistenceContext
 	  private EntityManager entityManager;
 
-	  private List<Departamento> departamantosEncontrados;
+	  private List<Departamento> departamentosEncontrados;
 
 	  public String buscarDepartamento() {
 	    String retVal = "confirmacion_JPQL";
 
 	    try {
-	      Query query = entityManager
-	              .createQuery(
-	                      "SELECT d FROM Departamento d WHERE d.nombreDepartamento "
-	                      + "LIKE :nombre");
-
-	      query.setParameter("nombre", "San%");
-
-	      departamantosEncontrados = query.getResultList();
+//	      Query query = entityManager
+//	              .createQuery(
+//	                      "SELECT d FROM Departamento d WHERE d.nombreDepartamento "
+//	                      + "LIKE :nombre");
+//
+//	      query.setParameter("nombre", "San%");
+	    	
+	    	
+	    	Query query = entityManager.createNativeQuery("SELECT * FROM DEPARTAMENTO WHERE NOMBRE_DEPARTAMENTO LIKE ?", Departamento.class);
+	    	query.setParameter(1, "San%");		
+	    			
+	      departamentosEncontrados = query.getResultList();
 	    } catch (Exception e) {
 	      retVal = "error_JPQL";
 	      e.printStackTrace();
@@ -38,14 +42,23 @@ public class SelectQueryDemoBean {
 	    return retVal;
 	  }
 
-	public List<Departamento> getDepartamantosEncontrados() {
-		return departamantosEncontrados;
+	public EntityManager getEntityManager() {
+		return entityManager;
 	}
 
-	public void setDepartamantosEncontrados(List<Departamento> departamantosEncontrados) {
-		this.departamantosEncontrados = departamantosEncontrados;
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
 
+	public List<Departamento> getDepartamentosEncontrados() {
+		return departamentosEncontrados;
+	}
+
+	public void setDepartamentosEncontrados(List<Departamento> departamentosEncontrados) {
+		this.departamentosEncontrados = departamentosEncontrados;
+	}
+
+	
 	  
 
 	 

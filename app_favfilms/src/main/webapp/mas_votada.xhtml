@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core" xmlns:ui="jakarta.faces.facelets">
+  <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Película(s) más votada(s)</title>
+
+    <!-- Incluir Bootstrap desde CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  </h:head>
+  <body>
+ 
+	<!-- Mensaje de alerta si no hay clientes -->
+			<h:panelGroup rendered="#{peliculaController.peliculasMasVotadas.size() == 1}">
+				<h2>La Película más votada es</h2>
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{peliculaController.peliculasMasVotadas.size() > 1}">
+				<h2>Las Películas más votadas son</h2>
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{peliculaController.peliculasMasVotadas.size() == 0}">
+				<h2>Aún no se han registrado votos</h2>
+			</h:panelGroup>
+			
+			
+			
+    <div class="container mt-4">
+      
+      <ui:repeat value="#{peliculaController.peliculasMasVotadas}" var="pelicula">
+      
+       <div class="container mt-4">
+		<div class="mb-3">
+          <h:outputText value="Título:" />#{pelicula.titulo}
+        </div>
+        <div class="mb-3">
+          <h:outputText value="Director:" />#{pelicula.director}
+        </div>
+        
+         <div class="mb-3">
+          <h:outputText value="Votos: " />#{pelicula.votos}
+        </div>
+         </div>
+         
+        <!-- Separador entre películas -->
+        <hr class="border-top border-secondary" />
+		</ui:repeat>
+						
+						
+  		<h:form>
+          <h:commandButton action="#{peliculaController.listarPeliculas}" value="Volver" immediate="true" class="btn btn-secondary" />
+       </h:form>
+        </div>
+   
+
+    <!-- Incluir JS de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
-	xmlns:ui="jakarta.faces.facelets" xmlns:f="jakarta.faces.core">
+	xmlns:f="jakarta.faces.core" xmlns:ui="jakarta.faces.facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Lista de Clientes</title>
@@ -10,16 +10,13 @@
 		rel="stylesheet" />
 </h:head>
 <h:body>
+<h:messages globalOnly="true" styleClass="alert alert-info" showSummary="false" showDetail="true" />
+
+
 	<div class="container mt-5">
 		<h1 class="text-center">Lista de Clientes</h1>
 		<h:form>
-			<!-- Mensaje de alerta si no hay clientes -->
-			<h:panelGroup rendered="#{empty clienteController.clientes}">
-				<div class="alert alert-warning" role="alert">No se
-					encontraron clientes.</div>
-			</h:panelGroup>
 
-			<!-- Tabla de clientes -->
 			<div class="table-responsive"
 				rendered="#{not empty clienteController.clientes}">
 				<table class="table table-striped">
@@ -37,18 +34,18 @@
 								<td>#{cliente.nombre}</td>
 								<td>#{cliente.apellido}</td>
 								<td>#{cliente.email}</td>
-								<td><h:commandLink value="Ver"
-										action="#{clienteController.verDetalleCliente}">
-										<f:param name="clienteId" value="#{cliente.clienteId}" />
-									</h:commandLink></td>
+								
+								   <td>
+                						<h:commandLink value="Editar" action="#{clienteController.editarCliente}">
+                    						<f:param name="clienteId" value="#{cliente.clienteId}" />
+                						</h:commandLink>
+            						</td>
+            
 							</tr>
 						</ui:repeat>
-
 					</tbody>
 				</table>
 			</div>
-
-			<!-- Botón para agregar nuevo cliente -->
 			<div class="text-center mt-3">
 				<h:commandButton action="#{clienteController.nuevoCliente}"
 					value="Nuevo Cliente" styleClass="btn btn-success" />
