@@ -6,14 +6,14 @@
       xmlns:f="jakarta.faces.core">
   <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Nuevo Cliente</title>
+    <title>Actualizar Datos del Cliente</title>
     <h:outputStylesheet name="css/jsfcrud.css" />
   </h:head>
   <body>
     <h:panelGroup id="messagePanel" layout="block">
       <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
     </h:panelGroup>
-    <h1>Nuevo Cliente</h1>
+    <h1>Actualizar Datos del Cliente</h1>
     <h:form>
       <h:panelGrid columns="2">
         <h:outputText value="Nombre:"/>
@@ -22,17 +22,8 @@
         <h:inputText id="apellido" value="#{clienteController.cliente.apellido}" title="Apellido" required="true"/>
         <h:outputText value="Email:"/>
         <h:inputText id="email" value="#{clienteController.cliente.email}" title="Email" required="true"/>
-        
-      	 <h:outputText value="Tipo de Cliente"/>
-        <h:selectOneMenu id="tipoCliente" value="#{clienteController.cliente.tipoCliente.id}">
-          <f:selectItems value="#{clienteController.tiposCliente}" 
-                   var="tipo"
-                   itemValue="#{tipo.id}" 
-                   itemLabel="#{tipo.descripcion}" />
-        </h:selectOneMenu>
-        
         <h:panelGroup>
-          <h:commandButton action="#{clienteController.crear}" value="Guardar"/>
+          <h:commandButton action="#{clienteController.actualizar}" value="Guardar"/>
           <h:commandButton action="#{clienteController.listarClientes}" value="Cancelar" immediate="true"/>
         </h:panelGroup>
       </h:panelGrid>

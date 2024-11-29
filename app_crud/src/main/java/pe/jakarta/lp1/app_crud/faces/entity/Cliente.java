@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 
@@ -16,7 +17,7 @@ public class Cliente implements Serializable {
 	
 	@Id
     @Column(name = "CLIENTE_ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int clienteId;
 
     @Column(name = "NOMBRE")
@@ -27,6 +28,9 @@ public class Cliente implements Serializable {
 
     @Column(name = "EMAIL")
     private String email;
+    
+    @JoinColumn(name = "TIPO_CLIENTE_ID", referencedColumnName = "TIPO_CLIENTE_ID")
+    private TipoCliente tipoCliente = new TipoCliente();
 
 	public int getClienteId() {
 		return clienteId;
@@ -58,6 +62,31 @@ public class Cliente implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	
+
+	public TipoCliente getTipoCliente() {
+		return tipoCliente;
+	}
+
+	public void setTipoCliente(TipoCliente tipoCliente) {
+		this.tipoCliente = tipoCliente;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Cliente [clienteId=");
+		builder.append(clienteId);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", apellido=");
+		builder.append(apellido);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append("]");
+		return builder.toString();
 	}
     
     

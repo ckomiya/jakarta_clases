@@ -39,11 +39,20 @@
           </h:column>
           <h:column>
             <f:facet name="header">
+              <h:outputText value="Tipo de Cliente"/>
+            </f:facet>
+            <h:outputText value="#{cliente.tipoCliente.descripcion}"/>
+          </h:column>
+          
+          <h:column>
+            <f:facet name="header">
               <h:outputText escape="false" value="&nbsp;"/>
             </f:facet>
             <h:commandLink value="Ver" action="#{clienteController.verDetalleCliente}"/>
             <h:outputText value=" "/>
-            <h:commandLink value="Editar" action="#{clienteController.editarCliente}"/>
+            <h:commandLink value="Editar" action="#{clienteController.editarCliente}">
+            	<f:param name="clienteId" value="#{cliente.clienteId}" />
+            </h:commandLink>
             <h:outputText value=" "/>
             <h:commandLink value="Eliminar" action="#{clienteController.eliminarCliente}"/>
           </h:column>
