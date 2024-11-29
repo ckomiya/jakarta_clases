@@ -54,7 +54,9 @@
             	<f:param name="clienteId" value="#{cliente.clienteId}" />
             </h:commandLink>
             <h:outputText value=" "/>
-            <h:commandLink value="Eliminar" action="#{clienteController.eliminarCliente}"/>
+           <h:commandLink value="Eliminar" action="#{clienteController.eliminarCliente}"  onclick="return confirm('¿Estás seguro de que deseas eliminar este elemento?');" >
+            	<f:param name="clienteId" value="#{cliente.clienteId}" />
+            </h:commandLink>
           </h:column>
         </h:dataTable>
       </h:panelGroup>

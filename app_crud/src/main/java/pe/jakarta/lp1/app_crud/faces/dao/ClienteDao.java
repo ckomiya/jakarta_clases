@@ -14,8 +14,8 @@ import pe.jakarta.lp1.app_crud.faces.entity.Cliente;
 @Stateless
 public class ClienteDao {
 
-	@Resource
-	private EJBContext ejbContext;
+//	@Resource
+//	private EJBContext ejbContext;
 
 	@PersistenceContext
 	private EntityManager em;
@@ -55,4 +55,15 @@ public class ClienteDao {
 		Cliente cliente = em.find(Cliente.class, id) ;
 		return cliente;
 	}
+	
+	public void eliminarCliente(Cliente cliente) {
+	    try {
+	    	cliente = em.getReference(Cliente.class, cliente.getClienteId());
+	        em.remove(cliente);
+	    } catch (Exception e) {
+	        throw new RuntimeException("Error al eliminar el cliente: " + cliente, e);
+	    }
+	}
+	
+	
 }

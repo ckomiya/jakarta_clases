@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import jakarta.ejb.EJB;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -28,6 +29,7 @@ public class ClienteController implements Serializable {
 	private Cliente cliente;
 
 	public String listarClientes() {
+		clientes = null;
 		return "/cliente/Lista";
 	}
 	
@@ -39,6 +41,19 @@ public class ClienteController implements Serializable {
 		return "/cliente/Editar";
 	}
 	
+	
+	public String eliminarCliente() {
+		int clienteId = Integer.parseInt(
+				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("clienteId"));
+
+		Cliente clienteAElminar = new Cliente(clienteId);
+
+		
+		dao.eliminarCliente(clienteAElminar);
+		return listarClientes();
+	}
+	
+	
 	public String nuevoCliente() {
 
 		cliente = new Cliente();
@@ -48,7 +63,10 @@ public class ClienteController implements Serializable {
 	
 
 	public List<Cliente> getClientes() {
-		clientes = dao.encontrarClientes();
+		if (clientes == null) {
+			clientes = dao.encontrarClientes();
+		}
+		
 		return clientes;
 	}
 	
@@ -62,7 +80,7 @@ public class ClienteController implements Serializable {
 			return null;
 		}
 		
-		return "/cliente/Lista";
+		return listarClientes();
 	}
 	
 	
@@ -76,7 +94,7 @@ public class ClienteController implements Serializable {
 			return null;
 		}
 		
-		return "/cliente/Lista";
+		return listarClientes();
 	}
 	
 	
