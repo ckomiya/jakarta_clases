@@ -1,4 +1,6 @@
-package pe.jakarta.lp1.app_crud.faces.init;
+package pe.jakarta.lp1.et2.init;
+
+
 
 import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -7,9 +9,9 @@ import jakarta.enterprise.event.Observes;
 
 @ApplicationScoped
 @DataSourceDefinition(
-    name = "java:app/jdbc/clienteBDDatasource",
+    name = "java:app/jdbc/empleadoBDDatasource",
     className = "com.mysql.cj.jdbc.Driver",
-    url = "jdbc:mysql://localhost:3306/clientebd?serverTimezone=UTC",
+    url = "jdbc:mysql://localhost:3306/empleadobd?serverTimezone=UTC",
     user = "root",
     password = "mysql"
 )

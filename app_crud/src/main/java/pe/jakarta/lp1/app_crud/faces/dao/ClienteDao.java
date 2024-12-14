@@ -10,6 +10,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaQuery;
 import pe.jakarta.lp1.app_crud.faces.entity.Cliente;
+import pe.jakarta.lp1.app_crud.faces.entity.TipoCliente;
 
 @Stateless
 public class ClienteDao {
@@ -63,6 +64,19 @@ public class ClienteDao {
 	    } catch (Exception e) {
 	        throw new RuntimeException("Error al eliminar el cliente: " + cliente, e);
 	    }
+	}
+
+	public List<Cliente> obtenerClientesPorTipo(TipoCliente tipoCliente) {
+		return em.createQuery("select c from Cliente c where c.tipoCliente = :tipo", Cliente.class)
+				.setParameter("tipo", tipoCliente)
+				.getResultList();
+	}
+
+	public List<Cliente> obtenerClientesPorNombreYApellido(String nombre, String apellido) {
+		return em.createQuery("select c from Cliente c where c.nombre like :nombre or c.apellido like :apellido", Cliente.class)
+				.setParameter("nombre", "%" + nombre + "%")
+				.setParameter("apellido","%" +  apellido+ "%")
+				.getResultList();
 	}
 	
 	

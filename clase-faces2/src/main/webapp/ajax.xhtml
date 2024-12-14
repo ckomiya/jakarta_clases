@@ -25,6 +25,16 @@
       <h:panelGrid columns="2">
         <h:panelGroup/>
         <h:panelGroup/>
+        
+        <h:selectOneMenu id="tipoProducto" value="#{ajaxController.selectOperador}" style="width: 100%;">
+					<f:selectItem itemLabel="uno" itemValue="1" />
+					<f:selectItem itemLabel="dos" itemValue="2" />
+					
+					<f:ajax execute="@this" listener="#{ajaxController.prueba}" render="suma" event="change"/>
+
+				</h:selectOneMenu>
+        
+        
         <h:outputText value="Primer Operador:"/>
         <h:inputText id="primero" value="#{ajaxController.primerOperador}" size="3"/>
         <h:outputText value="Segundo Operador:"/>

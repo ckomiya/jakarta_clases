@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.event.ActionEvent;
+import jakarta.faces.event.AjaxBehaviorEvent;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -18,10 +19,13 @@ public class AjaxController implements Serializable {
 	private String texto;
 	private int primerOperador;
 	private int segundoOperador;
+	private String selectOperador;
 
 	private int total;
 
-
+	public void prueba(AjaxBehaviorEvent actionEvent) {
+		System.out.println("pruebaaa");
+	}
 	public void calcularTotal(ActionEvent actionEvent) {
 		total = primerOperador + segundoOperador;
 	}
@@ -57,5 +61,13 @@ public class AjaxController implements Serializable {
 	public void setTotal(int total) {
 		this.total = total;
 	}
+	public String getSelectOperador() {
+		return selectOperador;
+	}
+	public void setSelectOperador(String selectOperador) {
+		this.selectOperador = selectOperador;
+	}
+	
+	
 
 }

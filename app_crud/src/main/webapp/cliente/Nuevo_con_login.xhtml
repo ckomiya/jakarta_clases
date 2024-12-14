@@ -32,13 +32,19 @@
     			<f:selectItem itemValue="4" itemLabel="Vip" />
 			</h:selectOneMenu>
         
-        
-          <h:outputText value="Fecha de Afiliación:" />
-          <h:inputText id="fechaIngreso" value="#{clienteController.cliente.fechaAfiliacion}" required="true">
-          	 <f:convertDateTime pattern="dd/MM/yyyy" />
-          </h:inputText>
-        
-        
+        <h2>Login</h2>
+         <h:outputText value=""/>
+          <h:outputText value="Usuario: "/>
+        <h:inputText id="usuario" value="#{clienteController.cliente.login.usuario}" title="Usuario" required="true"/>
+        <h:outputText value="Clave: "/>
+         
+         
+         <p:password id="pwd1" value="#{clienteController.cliente.login.clave}" feedback="false" match="pwd2" label="Password 1" required="true"/>
+		
+		 <h:outputText value="Reingrese la clave: "/>
+		<p:password id="pwd2" value="#{clienteController.cliente.login.clave}" feedback="false" label="Password 2" required="true"/>
+
+
         <h:panelGroup>
           <h:commandButton action="#{clienteController.crear}" value="Guardar"/>
           <h:commandButton action="#{clienteController.listarClientes}" value="Cancelar" immediate="true"/>

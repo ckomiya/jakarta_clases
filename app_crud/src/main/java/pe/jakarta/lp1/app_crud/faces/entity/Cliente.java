@@ -1,7 +1,9 @@
 package pe.jakarta.lp1.app_crud.faces.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,6 +14,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Cliente implements Serializable {
@@ -31,9 +37,22 @@ public class Cliente implements Serializable {
     @Column(name = "EMAIL")
     private String email;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TIPO_CLIENTE_ID", referencedColumnName = "TIPO_CLIENTE_ID")
-    private TipoCliente tipoCliente = new TipoCliente();
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "FECHA_AFILIACION") 
+    private Date fechaAfiliacion;
+    
+//    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+//    private Login login = new Login();
+    
+    @Column(name = "TIPO_CLIENTE")
+    private Integer tipoCliente;
+    
+    @Transient
+    private String descTipoCliente;
+    
+//    @ManyToOne
+//    @JoinColumn(name = "TIPO_CLIENTE_ID", referencedColumnName = "TIPO_CLIENTE_ID")
+//    private TipoCliente tipoCliente = new TipoCliente();
 
     
     public Cliente() {}
@@ -79,14 +98,57 @@ public class Cliente implements Serializable {
 	}
 	
 	
+	
+	
+	
 
-	public TipoCliente getTipoCliente() {
+	public String getDescTipoCliente() {
+		
+		if(tipoCliente.equals(1)) {
+			return "Regular";
+		}else if(tipoCliente.equals(2)) {
+			return "Premium";
+		}else if(tipoCliente.equals(3)) {
+			return "Corporativo";
+		}else {
+			return "Vip";
+		}
+	}
+
+
+
+	public void setDescTipoCliente(String descTipoCliente) {
+		this.descTipoCliente = descTipoCliente;
+	}
+
+
+
+	public Integer getTipoCliente() {
 		return tipoCliente;
 	}
 
-	public void setTipoCliente(TipoCliente tipoCliente) {
+
+
+	public void setTipoCliente(Integer tipoCliente) {
 		this.tipoCliente = tipoCliente;
 	}
+
+	
+	
+
+
+
+	public Date getFechaAfiliacion() {
+		return fechaAfiliacion;
+	}
+
+
+
+	public void setFechaAfiliacion(Date fechaAfiliacion) {
+		this.fechaAfiliacion = fechaAfiliacion;
+	}
+
+
 
 	@Override
 	public String toString() {

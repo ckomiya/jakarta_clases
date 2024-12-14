@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+  <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Nuevo Cliente</title>
+    <h:outputStylesheet name="css/jsfcrud.css" />
+  </h:head>
+  <body>
+    <h:panelGroup id="messagePanel" layout="block">
+      <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+    </h:panelGroup>
+    <h1>Detalle del  Cliente</h1>
+    <h:form>
+      <h:panelGrid columns="2">
+        <h:outputText value="Nombre:"/>
+        <h:outputText value="#{clienteController.cliente.nombre}" />
+        <h:outputText value="Apellido:"/>
+        <h:outputText value="#{clienteController.cliente.apellido}"/>
+        <h:outputText value="Email:"/>
+        <h:outputText value="#{clienteController.cliente.email}" />
+        
+        <h:outputText value="Tipo de Cliente:"/>
+        <h:outputText value="#{clienteController.cliente.tipoCliente.descripcion}" />
+                  
+        <h:panelGroup>
+          <h:commandButton action="#{clienteController.editarCliente()}" value="Editar">
+          </h:commandButton>
+          <h:commandButton action="#{clienteController.eliminarCliente()}" value="Eliminar" onclick="return confirm('¿Estás seguro de que deseas eliminar al cliente?');" >
+          </h:commandButton>
+          <h:commandButton action="#{clienteController.listarClientes()}" value="Cancelar" immediate="true"/>
+        </h:panelGroup>
+      </h:panelGrid>
+    </h:form>
+  </body>
+</html>

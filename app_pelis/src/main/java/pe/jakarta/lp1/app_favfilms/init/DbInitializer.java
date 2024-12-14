@@ -1,4 +1,4 @@
-package pe.jakarta.lp1.app_crud.faces.init;
+package pe.jakarta.lp1.app_favfilms.init;
 
 import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -9,7 +9,7 @@ import jakarta.enterprise.event.Observes;
 @DataSourceDefinition(
     name = "java:app/jdbc/clienteBDDatasource",
     className = "com.mysql.cj.jdbc.Driver",
-    url = "jdbc:mysql://localhost:3306/clientebd?serverTimezone=UTC",
+    url = "jdbc:mysql://localhost:3306/bd_peliculas",
     user = "root",
     password = "mysql"
 )

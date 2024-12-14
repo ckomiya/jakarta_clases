@@ -41,14 +41,27 @@
             <f:facet name="header">
               <h:outputText value="Tipo de Cliente"/>
             </f:facet>
-            <h:outputText value="#{cliente.tipoCliente.descripcion}"/>
+            <h:outputText value="#{cliente.descTipoCliente}"/>
           </h:column>
+          
+           <h:column>
+            <f:facet name="header">
+              <h:outputText value="Fecha de Afiliación"/>
+            </f:facet>
+            <h:outputText value="#{cliente.fechaAfiliacion}">
+            	<f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:outputText>
+             
+          </h:column>
+          
           
           <h:column>
             <f:facet name="header">
               <h:outputText escape="false" value="&nbsp;"/>
             </f:facet>
-            <h:commandLink value="Ver" action="#{clienteController.verDetalleCliente}"/>
+            <h:commandLink value="Ver" action="#{clienteController.verDetalleCliente}">
+            	<f:param name="clienteId" value="#{cliente.clienteId}" />
+            </h:commandLink>
             <h:outputText value=" "/>
             <h:commandLink value="Editar" action="#{clienteController.editarCliente}">
             	<f:param name="clienteId" value="#{cliente.clienteId}" />

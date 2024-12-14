@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+  <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Registro Empleado</title>
+
+    <!-- Incluir Bootstrap desde CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  </h:head>
+  <body>
+  <h:messages globalOnly="true" styleClass="alert alert-info" ></h:messages>
+    <div class="container mt-4">
+      <h1 class="mb-3">Registro Empleado</h1>
+      <h:form id="empleado">
+        <div class="mb-3">
+          <h:outputText value="Nombre" />
+          <h:inputText id="nombre" value="#{empleadoController.empleado.nombre}" required="true" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <h:outputText value="Apellido:" />
+          <h:inputText id="apellido" value="#{empleadoController.empleado.apellido}" required="true" class="form-control" />
+        </div>
+        
+        
+         <div class="mb-3">
+         <h:outputText value="Departamento: " />
+        	<h:selectOneMenu id="tipoCliente" value="#{empleadoController.empleado.departamento}" class="form-select">
+    			<f:selectItem itemValue="Finanzas" itemLabel="Finanzas" />
+    			<f:selectItem itemValue="Desarrollo" itemLabel="Desarrollo" />
+    			<f:selectItem itemValue="Innovación" itemLabel="Innovación" />
+			</h:selectOneMenu>
+        </div>
+        
+        
+        
+         <div class="mb-3">
+          <h:outputText value="Fecha de Ingreso:" />
+          <h:inputText id="fechaIngreso" value="#{empleadoController.empleado.fechaIngreso}" required="true" class="form-control">
+          	 <f:convertDateTime pattern="dd/MM/yyyy" />
+          </h:inputText>
+        </div>
+        
+       
+        <div>
+          <h:commandButton action="#{empleadoController.guardarYPreparar}" value="Guardar y Crear Nuevo Empleado" class="btn btn-primary" />
+          <h:outputText value=" " />
+          <h:commandButton action="#{empleadoController.guardarYListar}" value="Guardar y Lista los empleados" class="btn btn-primary" />
+         </div>
+      </h:form>
+    </div>
+
+  </body>
+</html>

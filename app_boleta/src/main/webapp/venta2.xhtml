@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:f="jakarta.faces.core">
+<h:head>
+	<title>Registrar Venta</title>
+</h:head>
+<h:body>
+	<h:form id="ventaForm">
+		<h1>Registrar Venta</h1>
+
+		<p:panelGrid columns="2" styleClass="form-grid" cellpadding="5">
+			<!-- Selección de Tipo de Producto -->
+			<p:outputLabel for="tipoProducto" value="Tipo de Producto:" />
+			<p:selectOneMenu id="tipoProducto" value="#{ventaController.selectedTipoProducto}" style="width: 100%;">
+				<f:selectItem itemLabel="Seleccione un tipo de producto" itemValue="" />
+				<f:selectItems value="#{ventaController.tiposProducto}" var="tipo" 
+								itemLabel="#{tipo.nombre}" itemValue="#{tipo}" />
+				<p:ajax listener="#{ventaController.cargarProductosPorTipo}"
+					update="producto" />
+			</p:selectOneMenu>
+
+
+			<!-- Selección de Producto -->
+			<p:outputLabel for="producto" value="Producto:" />
+			<p:selectOneMenu id="producto"
+				value="#{ventaController.selectedProducto}" style="width: 100%;">
+				<f:selectItem itemLabel="Seleccione un producto" itemValue="" />
+				<f:selectItems value="#{ventaController.productos}" var="producto"
+					itemLabel="#{producto.nombre}" itemValue="#{producto}" />
+			</p:selectOneMenu>
+
+			<!-- Cantidad -->
+			<p:outputLabel for="cantidad" value="Cantidad:" />
+			<p:inputText id="cantidad" value="#{ventaController.cantidad}" />
+
+			<!-- Botón para agregar el producto -->
+			<p:outputLabel />
+			<!-- Espaciador -->
+			<p:commandButton value="Agregar"
+				action="#{ventaController.agregarItem}" update="detalleTable total" />
+		</p:panelGrid>
+
+		<!-- Detalle de la Venta -->
+		<h3>Detalle de la Venta</h3>
+		<p:dataTable id="detalleTable" value="#{ventaController.detalles}"
+			var="detalle" editable="true">
+			<p:column headerText="Producto">
+				<h:outputText value="#{detalle.producto.nombre}" />
+			</p:column>
+			<p:column headerText="Cantidad">
+				<h:outputText value="#{detalle.cantidad}" />
+			</p:column>
+			<p:column headerText="Precio Unitario">
+				<h:outputText value="#{detalle.producto.precio}" />
+			</p:column>
+			<p:column headerText="Subtotal">
+				<h:outputText value="#{detalle.subtotal}" />
+			</p:column>
+			<p:column headerText="Acciones">
+				<p:commandButton value="Eliminar"
+					action="#{ventaController.eliminarItem(detalle)}"
+					update="detalleTable total" />
+			</p:column>
+		</p:dataTable>
+
+		<!-- Total -->
+		<h3>
+			Total:
+			<h:outputText id="total" value="#{ventaController.total}" />
+		</h3>
+
+		<!-- Botón para confirmar la venta -->
+		<p:commandButton value="Registrar Venta"
+			action="#{ventaController.registrarVenta}" update="ventaForm" />
+	</h:form>
+</h:body>
+</html>

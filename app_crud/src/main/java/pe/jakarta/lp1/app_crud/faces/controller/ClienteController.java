@@ -29,37 +29,56 @@ public class ClienteController implements Serializable {
 	private Cliente cliente;
 
 	public String listarClientes() {
+		cliente = null;
 		clientes = null;
-		return "/cliente/Lista";
+		return "/cliente/Lista?faces-redirect=true";
 	}
 	
 	public String editarCliente() {
-		int clienteId = Integer.parseInt(
-				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("clienteId"));
+		
+		if(cliente == null) {
+			int clienteId = Integer.parseInt(
+					FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("clienteId"));
 
-		cliente = dao.obtenerClientePorId(clienteId);
+			cliente = dao.obtenerClientePorId(clienteId);
+		}
+		
 		return "/cliente/Editar";
 	}
 	
-	
-	public String eliminarCliente() {
+	public String verDetalleCliente() {
 		int clienteId = Integer.parseInt(
 				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("clienteId"));
-
-		Cliente clienteAElminar = new Cliente(clienteId);
-
 		
-		dao.eliminarCliente(clienteAElminar);
-		return listarClientes();
+		cliente = dao.obtenerClientePorId(clienteId);
+		return "/cliente/Detalle";
 	}
-	
 	
 	public String nuevoCliente() {
 
 		cliente = new Cliente();
 
-		return "/cliente/Nuevo";
+		return "/cliente/Nuevo?faces-redirect=true";
 	}
+	
+	
+	public String eliminarCliente() {
+		
+		if(cliente == null) {
+			int clienteId = Integer.parseInt(
+					FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("clienteId"));
+
+			cliente = new Cliente(clienteId);
+		}
+		
+		
+
+		
+		dao.eliminarCliente(cliente);
+		return listarClientes();
+	}
+	
+	
 	
 
 	public List<Cliente> getClientes() {
@@ -72,6 +91,7 @@ public class ClienteController implements Serializable {
 	
 	public String crear() {
 		try {
+			//cliente.getLogin().setCliente(cliente);
 			dao.crearCliente(cliente);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente guardado de manera satisfactoria"));
 		} catch (Exception e) {

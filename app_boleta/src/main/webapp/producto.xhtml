@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+
+<h:head>
+    <title>Formulario de Producto</title>
+</h:head>
+
+<h:body>
+    <h:form id="formProducto">
+        <h1>Formulario de Producto</h1>
+
+        <p:panel header="Registro de Producto" style="width: 800px;">
+            <p:panelGrid columns="3">
+     
+                <p:outputLabel for="nombre" value="Nombre del Producto:" />
+                <p:inputText id="nombre" value="#{productoController.producto.nombre}" required="true" />
+                <p:message for="nombre" />
+
+                <p:outputLabel for="descripcion" value="Descripción:" />
+                <p:inputTextarea id="descripcion" value="#{productoController.producto.descripcion}" />
+                <p:message for="descripcion" />
+
+                <p:outputLabel for="precio" value="Precio:" />
+                <p:inputText id="precio" value="#{productoController.producto.precio}" required="true" />
+                <p:message for="precio" />
+
+                <p:outputLabel for="stock" value="Stock:" />
+                <p:inputText id="stock" value="#{productoController.producto.stock}" required="true" />
+                <p:message for="stock" />
+
+                <p:outputLabel for="tipoProducto" value="Tipo de Producto:" />
+                <p:selectOneMenu id="tipoProducto" value="#{productoController.producto.tipoProducto.id}" required="true">
+                    <f:selectItem itemLabel="Seleccione un tipo" itemValue="" />
+                    <f:selectItems value="#{productoController.tiposDeProducto}" var="tipo" 
+                                   itemLabel="#{tipo.nombre}" itemValue="#{tipo.id}" />
+                </p:selectOneMenu>
+                <p:message for="tipoProducto" />
+            </p:panelGrid>
+
+            <!-- Botón para guardar, con resetValues="true" -->
+            <p:commandButton value="Guardar" action="#{productoController.guardarProducto}" 
+                             icon="pi pi-save" update="formProducto, productosTable, growl" resetValues="true" style="margin-top: 10px;" />
+        </p:panel>
+
+       
+        <p:growl id="growl" showDetail="true" />
+
+        <p:panel header="Productos Registrados" style="margin-top: 20px;">
+            <p:dataTable id="productosTable" value="#{productoController.productos}" var="producto" 
+                         style="width: 100%;">
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{producto.nombre}" />
+                </p:column>
+                <p:column headerText="Descripción">
+                    <h:outputText value="#{producto.descripcion}" />
+                </p:column>
+                <p:column headerText="Precio">
+                    <h:outputText value="#{producto.precio}" />
+                </p:column>
+                <p:column headerText="Stock">
+                    <h:outputText value="#{producto.stock}" />
+                </p:column>
+                <p:column headerText="Tipo de Producto">
+                    <h:outputText value="#{producto.tipoProducto.nombre}" />
+                </p:column>
+            </p:dataTable>
+        </p:panel>
+    </h:form>
+</h:body>
+
+</html>
